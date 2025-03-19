@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-clean-order",
+    "stylelint-config-tailwindcss",
+    "stylelint-prettier/recommended"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "at-rule-no-deprecated": null,
+    "prettier/prettier": true,
+    "selector-max-id": 1,
+    "no-empty-source": null,
+    "no-descending-specificity": null
+  }
+}
