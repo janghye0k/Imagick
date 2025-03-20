@@ -6,7 +6,10 @@ import { Toaster } from 'sonner';
 function Layout() {
   return (
     <div className={cn(styles.wrapper)}>
-      <header className={cn(styles.header, 'shadow-md')}>
+      <header
+        className={cn(styles.header, 'shadow-md')}
+        onDragStart={(e) => e.preventDefault()}
+      >
         <Link to="/">
           <h1 className={cn('logo', 'text-3xl', 'text-slate-800')}>Imagick</h1>
         </Link>
@@ -19,7 +22,10 @@ function Layout() {
           <Outlet />
         </div>
       </main>
-      <footer className={cn(styles.footer, 'border-t', 'border-zinc-300/50')}>
+      <footer
+        className={cn(styles.footer, 'border-t', 'border-zinc-300/50')}
+        onDragStart={(e) => e.preventDefault()}
+      >
         <div className={cn('text-xs', 'text-zinc-500', 'font-semibold')}>
           © JangHyeok Kim - <span className="logo">Imagick</span>
         </div>

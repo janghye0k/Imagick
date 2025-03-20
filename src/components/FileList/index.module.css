@@ -1,0 +1,59 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  padding: 24px;
+}
+
+.image-list {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-card {
+  width: 200px;
+}
+
+.image-card-previewbox {
+  aspect-ratio: 1 / 1;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.widgets {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  width: 0;
+  max-width: 380px;
+
+  background-color: white;
+  box-shadow: 0 0 8px -1px rgba(0, 0, 0, 0.1);
+
+  transition: ease-in-out all 0.2s;
+}
+
+.settings.--open {
+  width: 380px;
+}

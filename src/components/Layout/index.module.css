@@ -8,11 +8,13 @@
     'footer';
   grid-template-rows: auto 1fr auto;
 
-  min-height: 100dvh;
+  height: 100dvh;
+  min-height: 480px;
 }
 
 .header {
   position: sticky;
+  z-index: 100;
   top: 0;
 
   display: flex;
@@ -27,7 +29,6 @@
 
 .main {
   grid-area: main;
-  padding: 24px;
 }
 
 .footer {
