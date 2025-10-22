@@ -10,20 +10,8 @@
   "jsxSingleQuote": false,
   "quoteProps": "as-needed",
   "bracketSameLine": false,
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss"
-  ],
-  "importOrder": [
-    "<THIRD_PARTY_MODULES>",
-    "^@libs/(.*)$",
-    "^@/styles/(.*)$",
-    "^@/(.*)$",
-    "./index.css",
-    "^[./]"
-  ],
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+  "importOrder": ["<THIRD_PARTY_MODULES>", "^@libs/(.*)$", "^@/styles/(.*)$", "^@/(.*)$", "./index.css", "^[./]"],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true,
-  "tailwindConfig": "./src/styles/tailwind.css",
-  "tailwindAttributes": ["className", "class", "tw", "cn", "cwa"]
+  "importOrderSortSpecifiers": true
 }

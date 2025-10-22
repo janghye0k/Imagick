@@ -34,6 +34,7 @@ export default defineConfig([
       'import/no-dynamic-require': 'warn',
       'import/no-unresolved': 'off',
       'import/no-nodejs-modules': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   // shadcn/ui 컴포넌트에 대한 규칙 비활성화
