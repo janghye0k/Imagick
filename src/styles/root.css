@@ -1,1 +1,17 @@
-@import url('./tailwind.css');
+@reference "tailwindcss";
+
+html,
+body {
+  height: 100%;
+}
+
+.font-logo {
+  font-family: 'Cafe24Behappy', sans-serif;
+}
+
+@font-face {
+  font-family: 'Cafe24Behappy';
+  src: url('/fonts/Cafe24Behappy.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
