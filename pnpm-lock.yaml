@@ -170,6 +170,9 @@ importers:
       vite-plugin-svgr:
         specifier: ^4.5.0
         version: 4.5.0(rollup@4.52.5)(typescript@5.9.3)(vite@7.1.11(@types/node@24.9.0)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
+      vtracer-wasm:
+        specifier: ^0.1.0
+        version: 0.1.0
       zod:
         specifier: ^4.1.12
         version: 4.1.12
@@ -4046,6 +4049,9 @@ packages:
         optional: true
       jsdom:
         optional: true
+
+  vtracer-wasm@0.1.0:
+    resolution: {integrity: sha512-q0A/z1NIuzROEJ9Z4NJirsl+PIH47sU5XKqLv/m7Nrf5MVDPcwogT1YfMBwfekncEeep8VLj6y60hpomwJJH6g==}
 
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
@@ -8082,6 +8088,8 @@ snapshots:
       - terser
       - tsx
       - yaml
+
+  vtracer-wasm@0.1.0: {}
 
   which-boxed-primitive@1.1.1:
     dependencies:

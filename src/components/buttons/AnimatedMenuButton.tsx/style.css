@@ -1,0 +1,57 @@
+@reference "tailwindcss";
+
+.animated-menu-button {
+  @apply cursor-pointer;
+}
+
+.animated-bugger {
+  @apply relative inline-block h-3.5 w-4 overflow-hidden;
+}
+
+.animated-bugger-bar {
+  @apply absolute left-0 inline-block h-0.5 w-4 bg-neutral-700 transition-transform duration-300;
+}
+
+.animated-bugger-bar.--top {
+  @apply top-0;
+}
+
+.animated-bugger-bar.--middle {
+  @apply top-1.5 translate-x-2;
+}
+
+.animated-bugger-bar.--bottom {
+  @apply top-3 translate-x-1;
+}
+
+.animated-menu-button:hover .animated-bugger-bar.--top {
+  @apply translate-x-1;
+}
+
+.animated-menu-button:hover .animated-bugger-bar.--middle {
+  @apply translate-x-0;
+}
+
+.animated-menu-button:hover .animated-bugger-bar.--bottom {
+  @apply translate-x-2;
+}
+
+.animated-menu-button[data-state='open'] .animated-bugger-bar.--top {
+  @apply top-1.5 translate-x-0 rotate-135;
+}
+
+.animated-menu-button[data-state='open'] .animated-bugger-bar.--middle {
+  @apply translate-x-4;
+}
+
+.animated-menu-button[data-state='open'] .animated-bugger-bar.--bottom {
+  @apply top-1.5 translate-x-0 rotate-225;
+}
+
+.animated-menu-button[data-state='open'] .animated-bugger-bar {
+  transition-property: transform, translate, rotate, background-color;
+}
+
+.animated-menu-button[data-state='open']:hover .animated-bugger-bar {
+  @apply bg-neutral-800;
+}
