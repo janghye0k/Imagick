@@ -32,7 +32,11 @@ const MainPage = () => {
             <Card className="hover:ring-primary/35 group h-full w-2xs transition-all duration-300 hover:shadow-xl hover:ring">
               <CardHeader>
                 <div className="mx-auto size-28 transition-all duration-300 group-hover:scale-102">
-                  <img className="object-cover" src={item.image} alt={`${item.title} Icon Image`} />
+                  <img
+                    className="in-dark:hue-rotate-180 in-dark:invert-100 object-cover"
+                    src={item.image}
+                    alt={`${item.title} Icon Image`}
+                  />
                 </div>
                 <CardTitle>{item.title}</CardTitle>
                 <CardDescription className="mt-2 text-xs">{item.description}</CardDescription>
