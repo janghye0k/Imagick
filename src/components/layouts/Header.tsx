@@ -37,7 +37,7 @@ const Header = () => {
         {/* LOGO */}
         <Link to="/" className="inline-flex items-center gap-2">
           <LogoSvg className="fill-primary size-5" />
-          <span className="font-logo text-primary text-4xl">Imagick</span>
+          <span className="font-logo text-primary text-4xl">{pkg.name}</span>
         </Link>
 
         <div className="ml-auto flex items-center gap-4 max-md:hidden">

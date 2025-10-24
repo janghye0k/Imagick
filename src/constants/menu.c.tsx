@@ -14,13 +14,13 @@ export const MENU_LIST = [
             (e.g. PNG to JPEG, JPEG to WebP, etc.)
           </>
         ),
-        image: '/images/convert-image.png',
+        image: '/images/features/convert-image.png',
         href: '/converter/image',
       },
       {
         title: 'SVG Converter',
         description: 'Create SVG (Scalable Vector Graphics) from your image.',
-        image: '/images/convert-svg.png',
+        image: '/images/features/convert-svg.png',
         href: '/converter/svg',
       },
     ],
@@ -28,21 +28,21 @@ export const MENU_LIST = [
   {
     title: 'Compress',
     description: 'Compress your image to reduce file size.',
-    image: '/images/compress.png',
+    image: '/images/features/compress.png',
     href: '/compress',
     children: [],
   },
   {
     title: 'Resize',
     description: 'Resize your image to different dimensions.',
-    image: '/images/resize.png',
+    image: '/images/features/resize.png',
     href: '/resize',
     children: [],
   },
   {
     title: 'Crop',
     description: 'Crop your image to a specific area.',
-    image: '/images/crop.png',
+    image: '/images/features/crop.png',
     href: '/crop',
     children: [],
   },
@@ -55,13 +55,13 @@ export const MENU_LIST = [
       {
         title: 'Transform Image',
         description: 'Transform your image with flip, rotate',
-        image: '/images/transform.png',
+        image: '/images/features/transform.png',
         href: '/tools/transform',
       },
       {
         title: 'Sprite Generator',
         description: 'Create CSS sprite from your images.',
-        image: '/images/sprite.png',
+        image: '/images/features/sprite.png',
         href: '/tools/sprite-generator',
       },
     ],
