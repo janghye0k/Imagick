@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+
+pnpm을 우선적으로 사용
+
+같은 폴더 내부가 아닌경우 alias 경로 사용 권장
+
+적극적으로 다음 라이브러리들을 사용
+
+- `zustand` (https://zustand-demo.pmnd.rs/)
+- `motion.js` (https://motion.dev/?platform=react)
+- `es-toolkit` (https://es-toolkit.dev/intro.html)
+- `overlay-kit` (https://overlay-kit.slash.page/ko)
+- `usehooks-ts` (https://usehooks-ts.com/)
