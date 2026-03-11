@@ -1,0 +1,56 @@
+---
+description: Prefer Serena MCP tools for Memory Bank file read/update; use standard tools for create/delete when Serena has no equivalent.
+globs: "**/memory-bank/**", "**/.serena/memories/memory-bank/**"
+alwaysApply: true
+---
+
+# MEMORY BANK FILE OPERATIONS — Serena MCP Preferred
+
+This rule applies only to file I/O on the **effective Memory Bank root** (either `memory-bank` or `.serena/memories/memory-bank`). When used with cursor-memory-bank, prefer Serena MCP for operations it supports; use standard tools otherwise.
+
+## Scope
+
+All files under the effective Memory Bank root: e.g. `tasks.md`, `activeContext.md`, `progress.md`, `creative/*.md`, `reflection/*.md`, `archive/*.md`, and other core Memory Bank files listed in memory-bank-path-override.
+
+## Prefer Serena MCP For
+
+**relative_path** for all Serena tools MUST be relative to the **project root** (e.g. `memory-bank/tasks.md` or `.serena/memories/memory-bank/creative/creative-auth.md`). Use forward slashes for path separators.
+
+### Discovery and listing
+
+- **Directory listing:** Use `serena:list_dir` with `relative_path` set to the Memory Bank root or a subdirectory (e.g. `memory-bank`, `memory-bank/creative`).
+- **Finding files by name/mask:** Use `serena:find_file` with `file_mask` and `relative_path` set to the Memory Bank root or subdirectory.
+
+### Reading and searching content
+
+- **Searching or reading content:** Use `serena:search_for_pattern` with `relative_path` set to the Memory Bank root or a specific file, and `context_lines_before` / `context_lines_after` as needed. When full-file content is required and cannot be obtained via search, use the standard Read tool.
+
+### Editing existing files
+
+- **In-file edits (replacements):** Use `serena:replace_content` with `relative_path` as the project-root-relative file path, and `needle` / `repl` / `mode` (literal or regex). Memory Bank files are markdown; do not use symbol-level tools (`replace_symbol_body`, etc.) for these files.
+
+### When Memory Bank is under `.serena/memories`
+
+When the effective Memory Bank root is `.serena/memories/memory-bank`, you **may** use Serena’s memory tools for file-level read/write/edit instead of (or in addition to) the file-based tools above:
+
+- **Read:** Use `read_memory` (e.g. `mcp_serena_read_memory`) with the appropriate memory file name/path for the Memory Bank file you need.
+- **Write (create or overwrite):** Use `write_memory` when creating a new memory file or overwriting an existing one under `.serena/memories`.
+- **Edit (in-place update):** Use `edit_memory` when updating part of an existing memory file (e.g. needle/repl or targeted edits).
+
+Prefer these memory tools when the agent or workflow is already using `.serena/memories` and the target is a Memory Bank file under that path; otherwise continue using `serena:search_for_pattern`, `serena:replace_content`, and the standard Read/Write tools as above.
+
+## When Serena Has No Tool — Use Standard Tools
+
+- **Creating new files:** Serena does not provide file creation. Use the standard Write (or equivalent) tool to create new files under the Memory Bank root (e.g. initial `tasks.md`, or new files in `creative/`, `reflection/`, `archive/`).
+- **Deleting files or directories:** Serena does not provide file/directory deletion. Use the standard Delete (or equivalent) tool when removal is required.
+
+## Summary
+
+| Operation       | Prefer                      | When under `.serena/memories` | Fallback (if needed) |
+| --------------- | --------------------------- | ----------------------------- | -------------------- |
+| List directory  | `serena:list_dir`           | —                             | —                    |
+| Find file       | `serena:find_file`          | —                             | —                    |
+| Search/read     | `serena:search_for_pattern` | `read_memory`                 | Read for full file   |
+| Edit content    | `serena:replace_content`    | `edit_memory`                 | —                    |
+| Create file     | —                           | `write_memory`                | Write                |
+| Delete file/dir | —                           | `delete_memory`                             | Delete               |

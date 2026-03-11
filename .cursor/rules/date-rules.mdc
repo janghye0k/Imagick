@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+
+# 날짜/시간 규칙
+
+이 워크스페이스에서 **날짜 또는 시간**이 필요할 때는 아래를 따른다.
+
+## 1. 기본 원칙
+
+- **쉘/스크립트에서 현재 날짜·시간을 가져올 때**: PowerShell 명령 **`Get-Date`**를 사용한다.
+- 사용자 OS가 Windows이며 기본 셸이 PowerShell이므로, 터미널 명령이나 스크립트 예시를 줄 때 `date`(Unix) 대신 `Get-Date`를 기준으로 한다.
+
+## 2. 사용 예시
+
+- **현재 날짜/시간 출력**: `Get-Date`
+- **형식 지정** (예: yyyy-MM-dd): `Get-Date -Format "yyyy-MM-dd"`
+- **스크립트·배치 작업**: 날짜가 필요한 로직에는 `Get-Date` 및 `-Format` 등 PowerShell 문법을 사용한다.
+
+## 3. 요약
+
+- 날짜·시간이 필요한 답변·명령·스크립트 → **Get-Date 사용**.

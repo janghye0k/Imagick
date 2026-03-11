@@ -1,0 +1,43 @@
+---
+description: Overrides Memory Bank root to .serena/memories/memory-bank when .serena/memories exists; defines all canonical paths under that root.
+globs: "**/memory-bank/**", "**/.serena/memories/memory-bank/**"
+alwaysApply: true
+---
+
+# MEMORY BANK PATH OVERRIDE (Serena Extension)
+
+When this rule is applied together with cursor-memory-bank, the **effective Memory Bank root** is determined as follows. All path references in this context MUST use this root.
+
+## Effective Memory Bank Root
+
+1. **If the directory `.serena/memories` exists at the project root:**  
+   `MEMORY_BANK_ROOT = ".serena/memories/memory-bank"`.
+
+2. **Otherwise:**  
+   `MEMORY_BANK_ROOT = "memory-bank"`.
+
+At the start of any Memory Bank read or write (in any mode or command), resolve the root by checking for `.serena/memories` at the project root, then use the chosen root for all subsequent path operations.
+
+## Canonical Paths Under MEMORY_BANK_ROOT
+
+All paths are relative to the project root. Replace the literal `memory-bank` in the list below with the resolved `MEMORY_BANK_ROOT` when this override is active.
+
+* **Tasks File:** `{MEMORY_BANK_ROOT}/tasks.md` - Active, in-progress task tracking, checklists, component lists. Ephemeral working document; persistent record is in the task archive.
+* **Active Context File:** `{MEMORY_BANK_ROOT}/activeContext.md`
+* **Progress File:** `{MEMORY_BANK_ROOT}/progress.md`
+* **Project Brief File:** `{MEMORY_BANK_ROOT}/projectbrief.md`
+* **Product Context File:** `{MEMORY_BANK_ROOT}/productContext.md`
+* **System Patterns File:** `{MEMORY_BANK_ROOT}/systemPatterns.md`
+* **Tech Context File:** `{MEMORY_BANK_ROOT}/techContext.md`
+* **Style Guide File:** `{MEMORY_BANK_ROOT}/style-guide.md`
+* **Creative Phase Docs:** `{MEMORY_BANK_ROOT}/creative/creative-[feature_name].md`
+* **Reflection Docs:** `{MEMORY_BANK_ROOT}/reflection/reflection-[task_id].md`
+* **Archive Docs:** `{MEMORY_BANK_ROOT}/archive/archive-[task_id].md`
+
+## Verification Mandate
+
+Before any create or edit operation on these core files, verify the path starts with the **effective** Memory Bank root (either `memory-bank/` or `.serena/memories/memory-bank/`). When creating a new core file (e.g. `tasks.md` at project start), create it at `{MEMORY_BANK_ROOT}/tasks.md` using the resolved root.
+
+## Coexistence with cursor-memory-bank
+
+This rule extends (overrides for the current context) the default `memory-bank/` assumption from cursor-memory-bank's memory-bank-paths. When both are loaded, this rule takes precedence for path resolution so that `.serena/memories/memory-bank` is used whenever `.serena/memories` exists.

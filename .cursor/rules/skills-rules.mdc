@@ -1,0 +1,39 @@
+---
+alwaysApply: true
+---
+
+# Skills 사용 규칙
+
+사용자 질문에 답하기 **전에** 반드시 다음을 수행한다.
+
+## 1. 사용 가능한 Skills 확인
+
+- **위치**: `.cursor/skills/` (및 workspace에 등록된 agent skills 목록).
+- **참고**: 전체 목록·용도는 `.cursor/skills/SKILLS_OVERVIEW.md`에서 확인 가능.
+
+## 2. 관련 Skill 매칭
+
+- 질문/요청의 **목적·주제·작업 유형**이 다음 중 하나에 해당하면 해당 영역의 skill을 우선 검토한다:
+  - **창의/미디어**: 아트, 이미지, 비디오, 테마 → algorithmic-art, canvas-design, image-enhancer, theme-factory, video-downloader
+  - **비즈니스/마케팅**: 브랜드, 릴리스노트, 도메인, 내부 소통, 리드 → brand-guidelines, changelog-generator, domain-name-brainstormer, internal-comms, lead-research-assistant
+  - **콘텐츠/작성**: 블로그, 문서, 회의 분석, 산문·교정(깔끔한 영어 문체) → beautiful_prose, brainstorming, content-research-writer, doc-coauthoring, meeting-insights-analyzer
+  - **생산성/정리**: 파일 정리, 송장, 이력서, URL 요약·계획 → file-organizer, invoice-organizer, tailored-resume-generator, tapestry
+  - **개발/기술**: React·Next 성능, UI/UX, 프론트엔드, 테스트, 리팩토링, Git, 리뷰 반영, 테스트 수정, MCP·rule·skill 작성 → react-best-practices, ui-ux-pro-max, frontend-design, web-artifacts-builder, webapp-testing, developer-growth-analysis, kaizen, git-pushing, review-implementing, test-fixing, mcp-builder, skill-creator 등
+  - **문서 작업**: Word/PDF/PPT/Excel → document-skills (docx, pdf, pptx, xlsx)
+  - **연동**: 외부 앱·서비스 연동 → connect
+- 위 목록에 없어도, SKILLS_OVERVIEW나 agent skills 설명을 보고 “이 요청에 이 skill이 유용하다”고 판단되면 해당 skill을 사용한다.
+
+## 3. Skill 실제 사용 (필수)
+
+- **관련 skill이 있으면**: 해당 skill의 `SKILL.md`(또는 등록된 skill 파일)를 **반드시 읽고**, 그 안의 지시·워크플로우·트리거에 따라 동작한다.
+- **금지**: “이 작업에는 X skill을 쓰면 좋다”고만 말하고, skill 파일을 읽지 않거나 따르지 않는 행동.
+- **원칙**: 관련이 있을 때는 skill을 **맥락에 적용**하고, 가능하면 skill이 정한 출력·형식·단계를 따른다.
+
+## 4. 요약
+
+- 매 질문마다: (1) 사용 가능한 skills 확인 → (2) 요청과 매칭되는 skill 선택 → (3) 선택한 skill의 SKILL.md를 읽고 지시에 따라 응답.
+- Skill이 없거나 부적합하면 skill 없이 답한다. Skill이 있으면 반드시 읽고 사용한다.
+
+## 5. 추가사항
+
+- 개발 요청에 대한 답변은 항상 `beautiful_prose` 스킬을 포함하여 응답한다.
