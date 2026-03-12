@@ -1,4 +1,4 @@
-import { addFilesWithLimits } from '@/lib/file';
+import { addFilesWithLimits, getTotalBytes } from '@/lib/file';
 import { create } from 'zustand';
 
 export type UploadItem = {
@@ -35,13 +35,15 @@ export const useFileStore = create<FileStoreType>((set, get) => ({
   totalBytes: 0,
   addFiles: (files) => {
     const result = addFilesWithLimits(get().items, files);
-    set({ items: [...get().items, ...result.added] });
+    const nextItems = [...get().items, ...result.added];
+    set({ items: nextItems, totalBytes: getTotalBytes(nextItems) });
     return result;
   },
   removeById: (id) => {
-    set({ items: get().items.filter((item) => item.id !== id) });
+    const nextItems = get().items.filter((item) => item.id !== id);
+    set({ items: nextItems, totalBytes: getTotalBytes(nextItems) });
   },
   clear: () => {
-    set({ items: [] });
+    set({ items: [], totalBytes: 0 });
   },
 }));

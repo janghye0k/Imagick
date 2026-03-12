@@ -1,6 +1,8 @@
-import { Link } from 'react-router';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dropzone } from '@/components/uploads/dropzone';
 import { UploadList } from '@/components/uploads/upload-list';
+import { Link } from 'react-router';
+import { Spotlight } from '@/components/ui/spotlight';
 
 type ToolCard = {
   name: string;
@@ -78,30 +80,36 @@ export function MainPage() {
       <section className="space-y-4">
         <div className="flex items-end justify-between gap-3">
           <h2 className="text-xl font-semibold tracking-tight">Tools</h2>
-          <p className="text-sm text-foreground/70">
-            Convert → Compress → Resize → Filter → Crop → Convert SVG → Transform → Sprite
-          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {TOOL_CARDS.map((tool) => (
-            <Link
-              key={tool.href}
-              to={tool.href}
-              className="group overflow-hidden rounded-xl border border-foreground/10 bg-background transition-colors hover:bg-foreground/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <div className="aspect-16/10 w-full overflow-hidden bg-foreground/5">
-                <img
-                  src={tool.imageSrc}
-                  alt=""
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  loading="lazy"
+            <Link key={tool.href} to={tool.href} className="group block focus:outline-none ">
+              <Card
+                size="sm"
+                className="overflow-hidden relative transition-all hover:shadow-md focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Spotlight
+                  className="bg-primary/50 blur-2xl"
+                  size={64}
+                  springOptions={{
+                    bounce: 0.3,
+                    duration: 0.1,
+                  }}
                 />
-              </div>
-              <div className="space-y-1 p-4">
-                <p className="text-sm font-semibold">{tool.name}</p>
-                <p className="text-sm text-foreground/70">{tool.description}</p>
-              </div>
+                <div className="aspect-16/10 w-full overflow-hidden ">
+                  <img
+                    src={tool.imageSrc}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] dark:invert dark:hue-rotate-180"
+                    loading="lazy"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-sm">{tool.name}</CardTitle>
+                  <CardDescription>{tool.description}</CardDescription>
+                </CardHeader>
+              </Card>
             </Link>
           ))}
         </div>

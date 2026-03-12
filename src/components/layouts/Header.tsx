@@ -1,5 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
 import { Link, NavLink } from 'react-router';
+import { useEffect, useMemo, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { AppText } from './AppText';
+import { MenuIcon, MoonIcon, SunIcon } from 'lucide-react';
+import { Disclosure, DisclosureContent } from '../ui/disclosure';
+import Logo from '@/assets/logo.svg?react';
 
 type NavItem = { to: string; label: string };
 
@@ -58,10 +63,10 @@ export function Header() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <Link
           to="/"
-          className="flex items-center gap-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="flex items-center gap-2 rounded-md text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <img src="/images/logo.svg" alt="" className="h-6 w-6" />
-          <span className="font-semibold tracking-tight">Imagick</span>
+          <Logo className="h-6 w-6 fill-current" />
+          <AppText>Imagick</AppText>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -73,29 +78,32 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="icon"
             onClick={() => setIsDark((v) => !v)}
-            className="rounded-md border border-foreground/10 px-3 py-2 text-sm transition-colors hover:bg-foreground/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-label="Toggle dark mode"
           >
-            {isDark ? 'Dark' : 'Light'}
-          </button>
+            {isDark ? <MoonIcon /> : <SunIcon />}
+          </Button>
 
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="icon"
+            className="md:hidden"
             onClick={() => setIsMobileMenuOpen((v) => !v)}
-            className="rounded-md border border-foreground/10 px-3 py-2 text-sm transition-colors hover:bg-foreground/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-nav"
           >
-            Menu
-          </button>
+            <MenuIcon />
+          </Button>
         </div>
       </div>
 
-      {isMobileMenuOpen ? (
-        <div id="mobile-nav" className="border-t border-foreground/10 bg-background md:hidden">
+      <Disclosure open={isMobileMenuOpen}>
+        <DisclosureContent className="border-t border-foreground/10 bg-background md:hidden">
           <nav className="mx-auto w-full max-w-6xl px-4 py-2" aria-label="Mobile primary">
             <div className="grid grid-cols-2 gap-1">
               {NAV_ITEMS.map((item) => (
@@ -110,8 +118,8 @@ export function Header() {
               ))}
             </div>
           </nav>
-        </div>
-      ) : null}
+        </DisclosureContent>
+      </Disclosure>
     </header>
   );
 }

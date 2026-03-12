@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Cafe24Behappy';
+  src: url('/fonts/Cafe24Behappy.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Wanted Sans', Inter, sans-serif;
+}

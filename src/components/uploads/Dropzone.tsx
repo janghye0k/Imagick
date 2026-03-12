@@ -1,6 +1,7 @@
+import { Button } from '@/components/ui/button';
 import { useFileStore } from '@/stores/file-store';
 import { useShallow } from 'zustand/react/shallow';
-import { useId, useMemo, useState } from 'react';
+import { useRef, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 type DropzoneProps = {
@@ -9,7 +10,7 @@ type DropzoneProps = {
 };
 
 export function Dropzone({ label, navigateOnAddTo }: DropzoneProps) {
-  const inputId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const addFiles = useFileStore(useShallow((state) => state.addFiles));
 
@@ -20,7 +21,7 @@ export function Dropzone({ label, navigateOnAddTo }: DropzoneProps) {
     () =>
       [
         'relative flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed p-6 text-center transition-colors',
-        isDragging ? 'border-primary bg-primary/5' : 'border-foreground/20 hover:bg-foreground/5',
+        isDragging ? 'border-primary bg-primary/15' : 'border-foreground/20 hover:bg-primary/5',
       ].join(' '),
     [isDragging]
   );
@@ -33,7 +34,11 @@ export function Dropzone({ label, navigateOnAddTo }: DropzoneProps) {
   };
 
   return (
-    <section aria-label={label}>
+    <section
+      aria-label={label}
+      className="bg-card rounded-xl overflow-hidden h-fit"
+      onClick={() => inputRef.current?.click()}
+    >
       <div
         className={baseClassName}
         data-dropzone-surface="true"
@@ -62,17 +67,15 @@ export function Dropzone({ label, navigateOnAddTo }: DropzoneProps) {
       >
         <div className="text-sm font-medium">{label}</div>
         <div className="text-sm text-foreground/70">Drag and drop files here, or click to choose.</div>
-        <label
-          htmlFor={inputId}
-          className="mt-2 inline-flex cursor-pointer items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-opacity hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
+        <Button type="button" size="sm" className="mt-2">
           Choose files
-        </label>
+        </Button>
         <input
-          id={inputId}
+          ref={inputRef}
           type="file"
           multiple
           className="sr-only"
+          aria-hidden
           onChange={(e) => {
             const files = e.currentTarget.files;
             if (files && files.length > 0) handleAdd(files);

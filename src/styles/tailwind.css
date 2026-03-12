@@ -148,6 +148,9 @@
 
   --width-app: 1280px;
   --max-width-app: 1280px;
+
+  /* custom */
+  --font-app: 'Cafe24Behappy', sans-serif;
 }
 
 @layer base {
