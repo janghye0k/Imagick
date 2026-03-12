@@ -1,0 +1,8 @@
+---
+globs: *.tsx,**/*.tsx
+alwaysApply: false
+---
+
+리액트 컴포넌트 구현시 `src/components/ui` 폴더에 있는 `shadcn` (or `motion-primitives`) 컴포넌트를 우선적으로 활용하도록한다.
+
+`/docs/ui/motion-primitives-ui-components-guide.md` 문서에 정의된 컴포넌트들을 빼면 모두 `https://ui.shadcn.com/docs`나 `shadcn mcp`, `shadcn skill`을 참고하여 파악한 뒤 사용한다.

@@ -32,6 +32,14 @@ export default tseslint.config(
     rules: {
       'react/no-unknown-property': 'off',
       'react-refresh/only-export-components': 'off',
+      'react-hooks/static-components': 'off',
+    },
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   }
 );
